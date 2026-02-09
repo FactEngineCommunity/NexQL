@@ -10,13 +10,10 @@ This repository contains the language examples, evolving documentation, and futu
 ## Why NexQL?
 NexQL aims to make query intent explicit, reduce translation loss from natural language, and support modern AI-era workflows:
 
-\- \*\*Readable by humans\*\*: queries resemble the question you would ask.
-
-\- \*\*Structured and deterministic\*\*: unambiguous relationships and filters.
-
-\- \*\*Composable\*\*: build complex queries by chaining constraints.
-
-\- \*\*Analytics-ready\*\*: built-in aggregation and grouping patterns.
+- **Readable by humans**: queries resemble the question you would ask.
+- **Structured and deterministic**: unambiguous relationships and filters.
+- **Composable**: build complex queries by chaining constraints.
+- **Analytics-ready**: built-in aggregation and grouping patterns.
 
 ## Quick look
 
