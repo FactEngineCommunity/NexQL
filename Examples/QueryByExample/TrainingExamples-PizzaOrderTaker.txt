@@ -1,0 +1,43 @@
+#What toppings does a Margherita have?
+WHICH PizzaTopping is for A PizzaNameHasTopping THAT has (PizzaName:'Margherita')
+
+#What is the name of your pizzeria?
+WHICH Pizzeria Name is for WHICH Pizzeria_ID
+
+#Where is Joes Pizza located?
+WHICH Location houses (Pizzeria:'Joes Pizza') AND THAT Location has WHICH Street Number AND has WHICH Street Name AND has WHICH Suburb
+
+#How many locations do you have?
+WHICH Location houses (Pizzeria:'Joes Pizza') RETURN COUNT(*)
+
+#Which suburbs do you deliver to?
+(Pizzeria:'Joes Pizza') at (Location^1) delivers to WHICH Suburb
+
+#Show me the toppings for a Napoli pizza
+(Pizza Name:Napoli) has WHICH Pizza Topping
+
+#Show me all the pizzas
+WHICH PizzaNameHasTopping has  WHICH Pizza Name RETURN DISTINCT PizzaName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

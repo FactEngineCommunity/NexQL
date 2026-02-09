@@ -1,0 +1,78 @@
+#Which customer made an order for which part
+WHICH Customer made an Order THAT is for WHICH Part
+
+#Which orders are of medium priority
+WHICH Order has (Order Priority:'3-MEDIUM')
+
+#Which orders are of urgent priority
+WHICH Order has (Order Priority:'1-URGENT')
+
+#Which orders are of high priority
+WHICH Order has (Order Priority:'2-HIGH')
+
+#Do we have any high priority orders
+WHICH Order has (Order Priority:'2-HIGH')
+
+#Show me the customers from Algeria
+WHICH Customer is from (Nation:'ALGERIA')
+
+#What is the account balance of customers that are in Indonesia
+WHICH Customer has WHICH Customer Account Balance AND THAT Customer is from (Nation:'INDONESIA')
+
+#Show me the customers that made an order for parts from suppliers based in Indonesia
+WHICH Customer made AN Order THAT is from A Supplier THAT is from (Nation:'INDONESIA')
+
+#Show me all the customers in the Africa region
+WHICH Customer is in (Region:'AFRICA')
+
+#Show me all the customers fom the Europe region
+WHICH Customer is in (Region:'EUROPE')
+
+Show me all the customers from the Africa region
+WHICH Customer is in (Region:'AFRICA')
+
+#Show me the dates of orders for customers in the Africa region
+WHICH Order Date is for AN Order THAT is for A Customer THAT is in (Region:'AFRICA')
+
+#Show me the customers that made an order for parts from suppliers based in Indonesia and where the customer is in the Africa region
+WHICH Customer made AN Order THAT includes A Supplier THAT is from (Nation:'INDONESIA') AND THAT Customer is in (Region:'AFRICA')      
+
+#Show me the retail price of each part
+WHICH Part has WHICH Retail Price
+
+#Show me all the customers fom Africa that bought a part with a retail price greater than 1100
+WHICH Customer is in (Region:'AFRICA') AND THAT Customer bought A Part THAT has Retail Price > 1100 
+
+#What is the total account balances for customers from Algeria
+WHICH Customer is from (Nation:'ALGERIA') AND has WHICH Customer Account Balance RETURN Customer.ACCTBAL.SUM 
+
+#What is the total account balances for customers from Africa
+WHICH Customer is from (Region:'AFRICA') AND has WHICH Customer Account Balance RETURN Customer.ACCTBAL.SUM
+
+#What is the cutomer details of the customers from Europe
+WHICH Customer is from (Region:'EUROPE') RETURN Customer.*
+
+#Show me the total account balance for customers by nation
+WHICH Customer is in WHICH Nation AND has WHICH Customer Account Balance RETURN Nation.N_NAME, Customer.ACCTBAL.SUM
+
+#Show me the total account balance for customers by region
+WHICH Customer is in WHICH Region AND has WHICH Customer Account Balance RETURN Region.R_NAME, Customer.ACCTBAL.SUM
+
+#show me the total price of orders by date
+WHICH Order has WHICH Total Price AND has WHICH Order Date RETURN Order.ORDERDATE, Order.TOTALPRICE.SUM    
+
+#What is the total number of orders for a part that is in a medium sized drum
+WHICH Order has A Line Item THAT is for A Part THAT has (Container:'MED DRUM') RETURN COUNT(Order.ORDERKEY)   
+
+#Show me customer that have orders that are for parts that are contained in a wrap pack
+WHICH Customer has AN Order THAT is for A Part THAT has (Container:'WRAP PACK')
+
+#Show me the customer that bought parts that are in wrap pack, and the part
+WHICH Customer bought WHICH Part THAT has (Container:'WRAP PACK')
+
+#Show me the customers and the parts they bought from suppliers that are in Africa, and where the parts are in a medium sized drum
+WHICH Customer has AN Order THAT has A Line ItemTHAT is for WHICH Part THAT has (Container:'MED DRUM') AND THAT Line Item is from A Supplier THAT is in a Nation THAT is (Region:'AFRICA')
+
+#What are the distinct nations that customers are from
+WHICH Nation has A Customer RETURN DISTINCT Nation
+
