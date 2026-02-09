@@ -1,0 +1,167 @@
+#Show me the films that are playing at the Great Western Cinema
+WHICH Film is showing at (Cinema:'Great Western Cinema')
+
+#What films are playing at the Rialto on 1st April 2023 at 10am
+WHICH Film is showing at (Cinema:'Rialto') on (DateTime:'2023-04-01 10:00')
+
+#What time is the booking that Peter made
+WHICH DateTime is for A Session THAT is for A Booking THAT is for (Person:'Peter')
+
+#Show me the films that are showing at which cinema at which datetime
+WHICH Film is showing at WHICH Cinema at WHICH DateTime
+
+#What films are there
+WHICH Film
+
+#What cinemas are there
+WHICH Cinema
+
+#What Seat is for the booking for Paul to watch Greece
+WHICH Seat is for A Booking THAT was made by (Person:'Paul') AND is for A Session THAT is to watch (Film:'Greece')
+
+#What date did Paul make a booking to watch Greece and for which seat 
+(Person:'Paul') made A Booking THAT is for A Session THAT is to watch (Film:'Greece') AND has WHICH Seat AND is on WHICH DateTime 
+
+#Show me the login names of people who made a booking to go and watch Rocky
+WHICH Person made A Booking THAT is for A Session THAT is to watch (Film:'Rocky') RETURN Person.LoginName
+
+#What dates does Peter have a booking for
+WHICH DateTime has A Session THAT has A Booking THAT is for (Person:'Peter')
+
+#Which seat has a booking. For which movie?
+WHICH Seat has A Booking THAT is for A Session to watch WHICH Film
+
+#What are the letters of seats in the Great Western Cinema
+WHICH Letter is for A Seat THAT is in A Row THAT is in (Cinema:'Great Western Cinema') RETURN Seat.Letter
+
+#Which bookings were made in January 2023
+WHICH Booking is for A Session THAT is on (DateTime.YEAR:2023) AND is on (DateTime.MONTH:01)   
+
+#What seat letter is in a row in the Rialto that has a booking
+WHICH Seat is in A Row THAT is in (Cinema:'Rialto') AND has A Booking RETURN Seat.Letter 
+
+#Did Peter make a booking in January?
+(Person:'Peter') made A Booking THAT is for A Session THAT is on (DateTime.MONTH:'01')
+
+#Are there any seats available to watch Rocky in Jenuary 2023
+WHICH Seat has NO Booking for A Session to watch (Film:'Rocky') on (DateTime.YEAR:'2023') AND on (DateTime.MONTH:'01')
+
+#Show me the films that Simon made a booking for
+WHICH Film has A Session THAT has A Booking THAT is for (Person:'Simon')
+
+#List the cinema names for all cinemas in the database
+WHERE Cinema RETURN Cinema.CinemaName
+
+#Which person made a booking
+WHICH Person made A Booking
+
+#Is there a Booking on 3rd March 2023 at 10am and which person made that booking
+WHICH Session has A Booking AND THAT Session is on (DateTime.DATE:'2023-03-03 10:00') AND THAT Booking is or WHICH Person
+
+#What sessions are showing in 2013
+WHICH Film is showing at WHICH Cinema on (DateTime.YEAR:'2013')
+
+#Which seat has a booking to watch Rocky at the Great Western Cinema on 20th January 2023
+WHICH Seat has A Booking for A Session to watch (Film:'Rocky') at (Cinema:'Great Western Cinema') on (DateTime.DATE:'2023-01-20')
+
+#Who has a booking to watch Rocky at the Great Western Cinema on 3rd March 2023 at 10am
+WHICH Person has A Booking for A Session to watch (Film:'Rocky') at (Cinema:'Great Western Cinema') on (DateTime:'2023-03-03 10:00')
+
+#What seat did Peter book to watch Rocky at the Great Western Cinema on 23rd March 2023 at 10am
+(Person:'Peter') made A Booking for WHICH Seat for A Session to watch (Film:'Rocky') at (Cinema:'Great Western Cinema') on (DateTime:'2023-03-23 10:00')
+
+#What movies are showing today
+WHICH Film is showing on (DateTime.DATE:TODAY)
+
+#What films are showing today at what theature
+WHICH Film is showing on (DateTime.DATE:TODAY) at WHICH Cinema
+
+#What cinemas do you have
+WHICH Cinema
+
+#When can I watch Greece
+WHICH Session is showing (Film:'Greece')
+
+#Is there a seat in row number 1
+WHICH Seat is in A Row THAT has (RowNr:1)
+
+#What time can I watch Rocky at the Rialto on 1st May 2023
+WHICH DateTime.TIME has (Film:'Rocky') showing at (Cinema:'Rialto') on (DateTime.DATE:'01/05/2023')
+
+#What time can I watch Rocky today at the Rialto
+WHICH DateTime.TIME has (Film:'Rocky') showing at (Cinema:'Rialto') on (DateTime.DATE:TODAY)
+
+#What time can I watch Rocky at the Rialto today
+WHICH DateTime.TIME has (Film:'Rocky') showing at (Cinema:'Rialto') on (DateTime.DATE:TODAY)
+
+#At what time can I watch Rocky at the Rialto today
+WHICH DateTime.TIME has (Film:'Rocky') showing at (Cinema:'Rialto') on (DateTime.DATE:TODAY)
+
+#Is there a seat to watch Rocky today
+WHICH Seat has NO Booking for A Session to watch (Film:'Rocky') on (DateTime.DATE:TODAY)
+
+#Are there any films showing today
+WHICH Film is showing on (DateTime.DATE:TODAY)
+
+#Is there a seat available to watch Greece today at the Great Western Cinema at 12pm
+WHICH Seat is in (Cinema:'Great Western Cinema') AND has NO Booking for A Session to watch (Film:'Greece') at (Cinema:'Great Western Cinema') (on (DateTime.DATE:TODAY) AND on (DateTime.TIME:'12:00:00'))
+
+#Is there a seat available to watch Greece today at the Great Western Cinema at 12pm and what section is that seat in
+WHICH Seat is in (Cinema:'Great Western Cinema') AND is in WHICH Section AND has NO Booking for A Session to watch (Film:'Greece') at (Cinema:'Great Western Cinema') (on (DateTime.DATE:TODAY) AND on (DateTime.TIME:'12:00:00'))
+
+#When can I watch Greece today and at which cinema
+WHICH Session is showing (Film:'Greece') on (DateTime.DATE:TODAY) AND at WHICH Cinema
+
+#Is there a seat available to watch Greece today at the Great Western Cinema
+WHICH Seat is in (Cinema:'Great Western Cinema') AND has NO Booking for A Session to watch (Film:'Greece') at (Cinema:'Great Western Cinema') on (DateTime.DATE:TODAY)
+
+#Which seat is available to watch Rocky at the Rialto on 1st May 2021 at 10:30am
+WHICH Seat is in (Cinema:'Rialto') AND has NO Booking for A Session to watch (Film:'Rocky') at (Cinema:'Rialto') on (DateTime:'2021-05-01 10:30')
+
+#How many seats are in the Great Western Cinema
+WHICH Seat is in A Row in (Cinema:'Great Western Cinema') RETURN COUNT(*)
+
+#What time is Rocky playing at the Great Western Cinema
+WHICH Session is showing (Film:'Rocky') at (Cinema:'Great Western Cinema')
+
+#When is Rocky showing at the Great Western Cinema on 1st May 2021
+WHICH Session is showing (Film:'Rocky') at (Cinema:'Great Western Cinema') on (DateTime:'2021-05-01')
+
+#What booking slots do you have available to watch Rocky at 10am on 21st May 2023 at the Rialto
+WHICH Seat THAT is in (Cinema:'Rialto') has NO Booking THAT is for A Session to watch (Film:'Rocky') at (Cinema:'Rialto') on (DateTime:'2023-05-21 10am')
+
+#Show me the seats in the Gala section
+WHICH Seat is in (Section:'Gala')
+
+#How many different types of section are there
+WHICH Section RETURN COUNT(*)
+
+#Which seat is in the Public section at the Great Western Cinema
+WHICH Seat is in (Section:'Public') AND is at (Cinema:'Great Western Cinema')
+
+#Are there any seats in the Public section at the Great Western Cinema that are available to watch Greece today
+WHICH Seat is in (Section:'Public') AND is at (Cinema:'Great Western Cinema') AND has NO Booking for A Session to watch (Film:'Greece') at (Cinema:'Great Western Cinema') on (DateTime.DATE:TODAY)
+
+#What sections are there at the Rialto
+WHICH Section has A Seat THAT is in A Row THAT is in (Cinema:'Rialto')
+
+#What sessions and their films are showing at the Great Western Cinema today
+WHICH Session is showing WHICH Film at (Cinema:'Great Western Cinema') on (DateTime.DATE:TODAY)
+
+#What sessions are showing at the Rialto today
+WHICH Session is showing WHICH Film at (Cinema:'Rialto') on (DateTime.DATE:TODAY)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
