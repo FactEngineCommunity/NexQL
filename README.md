@@ -1,5 +1,4 @@
-NexQL - Query language built for the AI era.
-
+NexQL - Query language built for the AI-era.
 
 # NexQL
 
@@ -19,21 +18,20 @@ NexQL aims to make query intent explicit, reduce translation loss from natural l
 
 **Question → NexQL**
 
+What films are playing at the Rialto on 1st April 2023 at 10am?
 ```
-\# What films are playing at the Rialto on 1st April 2023 at 10am
-
 WHICH Film is showing at (Cinema:'Rialto') on (DateTime:'2023-04-01 10:00')
 ```
 
+Which customer had the highest sales in June 1999?
 ```
-# Which customer had the highest sales in June 1999
 WHICH Sales Order was on (Sales Date.MONTH:'06') AND was on (Sales Date.YEAR:'1999')
 RETURN SalesOrder.SldToCustName, SalesOrder.SlsLineTotal.SUM
 ORDER BY 2 DESC
 ```
 
+Show me the total sales by customer city
 ```
-\# Show me the total sales by customer city
 WHICH Sales Order has WHICH Sold To Customer City AND WHICH Line Total
 RETURN SalesOrder.SldToCustCity, SalesOrder.SlsLineTotal.SUM
 GROUP BY SalesOrder.SldToCustCity
@@ -47,19 +45,19 @@ GROUP BY SalesOrder.SldToCustCity
 
 ## Example patterns
 
+Find seats available for a film at a cinema on a date
 ```nexql
-# Find seats available for a film at a cinema on a date
 WHICH Seat has NO Booking for A Session to watch (Film:'Rocky')
 at (Cinema:'Great Western Cinema') on (DateTime.DATE:'2023-01-20')
 ```
 
+Ask for distinct entities
 ```nexql
-# Ask for distinct entities
 WHICH Nation has A Customer RETURN DISTINCT Nation
 ```
 
+Aggregate and filter
 ```nexql
-# Aggregate and filter
 WHICH Sales Order was on (Sales Date.YEAR:'2020') AND has WHICH SldToCustCntry AND WHICH Line Total
 RETURN SalesOrder.SldToCustCntry, SalesOrder.SlsLineTotal.SUM
 GROUP BY SalesOrder.SldToCustCntry
