@@ -1,4 +1,4 @@
-NexQL query language.
+NexQL - Query language built for the AI era.
 
 
 # NexQL
