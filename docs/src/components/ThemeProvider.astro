@@ -1,0 +1,12 @@
+---
+import DefaultThemeProvider from '@astrojs/starlight/components/ThemeProvider.astro';
+---
+<script is:inline>
+  // First visit starts dark; preserve the reader's explicit Light or Auto choice.
+  try {
+    if (localStorage.getItem('starlight-theme') === null) {
+      localStorage.setItem('starlight-theme', 'dark');
+    }
+  } catch { /* The standard provider handles the system theme when storage is unavailable. */ }
+</script>
+<DefaultThemeProvider />

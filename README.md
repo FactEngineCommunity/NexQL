@@ -20,7 +20,7 @@ NexQL aims to make query intent explicit, reduce translation loss from natural l
 **Question → NexQL**
 
 ```
-\# What films are playing at the Rialto on 1st April 2023 at 10am
+# What films are playing at the Rialto on 1st April 2023 at 10am
 
 WHICH Film is showing at (Cinema:'Rialto') on (DateTime:'2023-04-01 10:00')
 ```
