@@ -2,8 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 export default defineConfig({
-  site: 'https://factenginecommunity.github.io',
-  base: '/NexQL/',
+  site: 'https://nexql.org',
   integrations: [starlight({
     title: 'NexQL',
     description: 'The query language for AI agents. Natural-language readability. Deterministic queries. SQL and Cypher through FactEngine.',
