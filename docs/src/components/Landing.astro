@@ -2,7 +2,7 @@
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const link = (p: string) => base + '/' + p + '/';
 const examples = [
-  {name:'Find films', question:'What films are playing at the Rialto?', query:"WHICH Film is showing at (Cinema:'Rialto')", note:'WHICH selects Film. The named cinema constrains the question. No RETURN clause needed.'},
+  {name:'Find films', question:'What films are playing at the Rialto?', query:"WHICH Film is showing at (Cinema:'Rialto') on (DateTime:TODAY)", note:'WHICH selects Film. The named cinema constrains the question. No RETURN clause needed.'},
   {name:'Follow relationships', question:'What films did Simon book?', query:"WHICH Film has A Session\nTHAT has A Booking\nTHAT is for (Person:'Simon')", note:'Follow the relationships in the model. A introduces a related object; THAT continues the reading.'},
   {name:'Choose results', question:'Show films, cinemas and times.', query:'WHICH Film is showing at WHICH Cinema at WHICH DateTime', note:'Put WHICH in front of each object type you want returned.'},
 ];
@@ -11,10 +11,10 @@ const showcase = [
   { domain: 'CUSTOMER ORDERS', feature: 'Choose multiple results', question: 'Who bought what?', query: 'WHICH Customer made AN Order\nTHAT is for WHICH Part', explanation: 'Return customers and parts together. WHICH makes the selection explicit.' },
   { domain: 'CINEMA BOOKINGS', feature: 'Follow relationships', question: 'What films did Simon book?', query: "WHICH Film has A Session\nTHAT has A Booking\nTHAT is for (Person:'Simon')", explanation: 'Follow a readable path through the model, from a film to the person who booked.' },
   { domain: 'PIZZA ORDERS', feature: 'Ask about your domain', question: 'What toppings are on a Margherita?', query: "WHICH PizzaTopping is for A PizzaNameHasTopping\nTHAT has (PizzaName:'Margherita')", explanation: 'Use the names and relationship readings in the pizza model to ask a specific question.' },
-  { domain: 'CINEMA BOOKINGS', feature: 'Count the matches', question: 'How many seats are in this cinema?', query: "WHICH Seat is in A Row\nin (Cinema:'Great Western Cinema')\nRETURN COUNT(*)", explanation: 'Add RETURN when you want an aggregate instead of the default identifying fields.' },
+  { domain: 'CINEMA BOOKINGS', feature: 'Count the matches', question: 'How many seats are in this cinema?', query: "WHICH Seat is in A Row\nTHAT is in (Cinema:'Great Western Cinema')\nRETURN COUNT(*)", explanation: 'Add RETURN when you want an aggregate instead of the default identifying fields.' },
   { domain: 'SALES ANALYTICS', feature: 'Group and aggregate', question: 'What are total sales by customer city?', query: 'WHICH Sales Order has WHICH Sold To Customer City\nAND WHICH Line Total\nRETURN SalesOrder.SldToCustCity, SalesOrder.SlsLineTotal.SUM\nGROUP BY SalesOrder.SldToCustCity', explanation: 'Keep the domain question readable while expressing exactly how totals should be grouped.' },
 ];
-const highlight = (query: string) => query.split(/('(?:[^']*)'|\b(?:GROUP BY|RETURN|WHICH|THAT|COUNT|SUM|AND|AN|NO|A)\b)/g).map(text => ({text, kind: text.startsWith("'") ? 'value' : /^(GROUP BY|RETURN|WHICH|THAT|COUNT|SUM|AND|AN|NO|A)$/.test(text) ? 'keyword' : 'plain'}));
+const highlight = (query: string) => query.split(/('(?:[^']*)'|\b(?:GROUP BY|RETURN|WHICH|THAT|COUNT|SUM|AND|AN|NO|A|TODAY)\b)/g).map(text => ({text, kind: text.startsWith("'") ? 'value' : /^(GROUP BY|RETURN|WHICH|THAT|COUNT|SUM|AND|AN|NO|A|TODAY)$/.test(text) ? 'keyword' : 'plain'}));
 ---
 <div class="nexql-home">
   <nav class="home-nav" aria-label="Main navigation"><span class="eyebrow">THE AGENTIC QUERY LANGUAGE / BY FACTENGINE</span><div><a href={link('guides/example')}>Guide</a><a href={link('guides/agents')}>For agents</a><a href={link('reference/examples')}>Examples</a><a href="https://github.com/FactEngineCommunity/NexQL">GitHub ↗</a></div></nav>
